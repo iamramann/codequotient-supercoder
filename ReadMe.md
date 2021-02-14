@@ -25,9 +25,9 @@
 
 - [Assignment-16 : To Do App Server](https://github.com/rashx358/codequotient-supercoder/tree/main/Assignment-16)
 - [Assignment-17-1 : E-commerce V1](https://github.com/rashx358/codequotient-supercoder/tree/main/Assignment-17/Assignment%20-%20E-commerce%20V3)
-- [\* Assignment-17-2-1 : E-commerce V2](https://github.com/rashx358/codequotient-supercoder/tree/main/Assignment-17/Assignment%20-%20E-commerce%20V3)
-- [\* Assignment-17-2-2 : E-commerce V2-2](https://github.com/rashx358/codequotient-supercoder/tree/main/Assignment-17/Assignment%20-%20E-commerce%20V3)
-- [\* Assignment-17-3 : E-commerce V3](https://github.com/rashx358/codequotient-supercoder/tree/main/Assignment-17/Assignment%20-%20E-commerce%20V3)
+- [Assignment-17-2-1 : E-commerce V2](https://github.com/rashx358/codequotient-supercoder/tree/main/Assignment-17/Assignment%20-%20E-commerce%20V3)
+- [Assignment-17-2-2 : E-commerce V2-2](https://github.com/rashx358/codequotient-supercoder/tree/main/Assignment-17/Assignment%20-%20E-commerce%20V3)
+- [Assignment-17-3 : E-commerce V3](https://github.com/rashx358/codequotient-supercoder/tree/main/Assignment-17/Assignment%20-%20E-commerce%20V3)
 
 ## 4. Frontend development using ReactJs
 
