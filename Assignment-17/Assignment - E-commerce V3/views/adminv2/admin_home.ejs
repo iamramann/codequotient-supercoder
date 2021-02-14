@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome Admin</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <!-- jquery  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
+    <!-- css -->
+    <link rel="stylesheet" href="/css/adminv2/home_css.css" />
+    <!-- script -->
+    <script defer type="module" src="script/adminv2/navbar_script.js"></script>
+  </head>
+
+  <body>
+    <!-- navigation bar -->
+    <%-include("../partials/navbar.ejs") %>
+
+    <!-- product list form start -->
+    <section class="add-product" id="add-product">
+      <div class="container grid">
+        <h1>Product Listing</h1>
+        <!-- /list-product -->
+        <div class="form-bg-light form-container">
+          <form
+            action="/list-product"
+            id="product-details"
+            enctype="multipart/form-data"
+            method="POST"
+          >
+            <div class="row">
+              <div class="col-25">
+                <label for="fname">Product Name</label>
+              </div>
+              <div class="col-75">
+                <input
+                  required
+                  type="text"
+                  name="product_name"
+                  placeholder="Enter Product Name"
+                  value=""
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="pimage">Product Image URL</label>
+              </div>
+              <div
+                class="col-75"
+                style="opacity: 0.5; pointer-events: none; cursor: not-allowed"
+              >
+                <input
+                  required
+                  type="text"
+                  name="image_url"
+                  placeholder="Enter Image URL(Filled Automatically)"
+                  id="image-url"
+                  value=""
+                  readonly="true"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="pid">Product Id</label>
+              </div>
+              <div
+                class="col-75"
+                style="opacity: 0.5; pointer-events: none; cursor: not-allowed"
+              >
+                <input
+                  required
+                  type="text"
+                  name="pid"
+                  placeholder="Product Id(Filled Automatically)"
+                  id="pid"
+                  value=""
+                  readonly="true"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="fname">Product Desciption</label>
+              </div>
+              <div class="col-75">
+                <textarea
+                  name="description"
+                  id="product_description"
+                  cols="30"
+                  rows="10"
+                  placeholder="Enter Product Description"
+                ></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="quantity">Quantity</label>
+              </div>
+              <div class="col-75">
+                <input
+                  required
+                  type="number"
+                  name="quantity"
+                  id="quantity"
+                  placeholder="Enter Product Quantity"
+                  value=""
+                  min="1"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="price">Price</label>
+              </div>
+              <div class="col-75">
+                <input
+                  required
+                  type="number"
+                  name="price"
+                  id="price"
+                  placeholder="Enter Product Price (INR)"
+                  value=""
+                  min="1"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="file">Product Image</label>
+              </div>
+              <div class="col-75">
+                <input type="file" name="file" id="file" />
+              </div>
+            </div>
+
+            <div class="row">
+              <input type="submit" name="submit" />
+            </div>
+          </form>
+          <!-- script to filled details automatically start  -->
+          <script>
+            const file = $("#file");
+            const form = $("#product-details");
+            file.change(function (e) {
+              const filename = e.target.files[0].name;
+              $("#image-url").val("/uploads/products/" + filename);
+              const pid = "p" + Math.floor(Math.random() * 999999999);
+              $("#pid").val(pid);
+              $("#product_description").val(
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id gravida purus, commodo vehicula velit. Etiam quam felis, semper ac turpis vel, ornare finibus erat. Curabitur blandit fringilla rutrum. Vivamus at metus eget libero volutpat posuere. Morbi euismod ornare suscipit. Mauris mollis magna ut sodales porta. Donec imperdiet lacinia tortor quis tempor. Nulla lacinia quam commodo nunc posuere, eget imperdiet ante blandit. Aliquam in hendrerit diam."
+              );
+            });
+            form.submit(function (e) {
+              alert("Product added successfully");
+            });
+          </script>
+          <!-- script to filled details automatically end  -->
+        </div>
+      </div>
+    </section>
+    <!-- product list form end -->
+
+    <!-- product display section start -->
+    <section class="display-product" id="display-product">
+      <div class="container grid">
+        <h1>All Listed Products</h1>
+        <div class="div-table">
+          <div class="row-x heading" style="background-color: #f1f1f1">
+            <div class="col">
+              <label>Name</label>
+            </div>
+            <div class="col"><label>Price (INR)</label></div>
+            <div class="col"><label>Quantity</label></div>
+            <div class="col"><label>Image URL</label></div>
+            <div class="col"><label>Product Id</label></div>
+            <div class="col"><label>Actions</label></div>
+          </div>
+          <%if(product_list) {%> <% product_list.forEach(function(x,xindex) {%>
+          <div class="row-x">
+            <div class="col opacity">
+              <label id="p-name"><%=x.product_name%></label>
+            </div>
+            <div class="col opacity">
+              <label id="price">₹<%=x.price%></label>
+            </div>
+            <div class="col opacity">
+              <label id="qty"><%=x.quantity%> </label>
+            </div>
+            <div class="col opacity">
+              <a href="<%=x.image_url%>" target="_blank">view Image</a>
+            </div>
+            <div class="col opacity"><label><%=x.pid%></label></div>
+            <div class="col flex">
+              <button class="btn btn-success" id="update-product-<%=x.pid%>">
+                update
+              </button>
+              <!-- script for update btn functionality start -->
+              <!--
+                 <script>
+                $("#update-product-<%#=x.pid%>").click(function (e) {
+                  $("#update-product-<%#=x.pid%>").unbind("click");
+                  var target = $("#update-product-<%#=x.pid%>")
+                    .parent()
+                    .parent()[0];
+                  const arr = Array.from($(target).children());
+                  for (var i = 0; i < arr.length - 2; i++) {
+                    $(arr[i])
+                      .attr("contenteditable", "true")
+                      .css({ opacity: "1", "font-weight": "bolder" });
+                  }
+                  $("#update-product-<%#=x.pid%>")
+                    .css({
+                      "background-color": "var(--primary-color)",
+                    })
+                    .text("Submit");
+
+                  //new ajax to send data to the server
+                  $("#update-product-<%#=x.pid%>").click(function (e) {
+                    const product_name = $("#p-name").text().trim();
+                    var price = $("#price").text().trim();
+                    price = parseInt(price.substring(1));
+                    const quantity = parseInt($("#qty").text().trim());
+
+                    // console.log(product_name, typeof price, typeof quantity);
+                    const data_object = {
+                      product_name: product_name,
+                      price: price,
+                      quantity: quantity,
+                    };
+
+                    $("#update-product-<%#=x.pid%>").unbind("click");
+                    $("#update-product-<%#=x.pid%>")
+                      .css({
+                        "background-color": "var(--success-color-2)",
+                      })
+                      .text("update");
+                    $.ajax({
+                      type: "PUT",
+                      url: "/update-product-details/<%#=x.id%>",
+                      data: data_object,
+                    })
+                      .done(function (data) {
+                        for (var i = 0; i < arr.length - 2; i++) {
+                          $(arr[i])
+                            .attr("contenteditable", "false")
+                            .css({ opacity: "0.7", "font-weight": "600" });
+                        }
+                        console.log("success");
+                      })
+                      .fail(function () {
+                        console.log("Error");
+                      });
+                  });
+                });
+              </script>
+             -->
+              <!-- script for update btn functionality end -->
+
+              <button class="btn btn-danger" id="delete-product-<%=x.pid%>">
+                Delete
+              </button>
+              <!-- script to perform delete btn functionality start -->
+              <script>
+                $("#delete-product-<%=x.pid%>").click(function (e) {
+                  const data = { id: "<%=x._id%>" };
+                  $.ajax({
+                    type: "GET",
+                    url: "/delete-product",
+                    data: data,
+                  })
+                    .done(function (data) {
+                      const target = $("#delete-product-<%=x.pid%>")
+                        .parent()
+                        .parent()[0];
+
+                      target.remove();
+                      alert("Product successfully deleted");
+                    })
+                    .fail(function () {
+                      console.log("err");
+                    });
+                });
+              </script>
+              <!-- script to perform delete btn functionality end -->
+            </div>
+          </div>
+          <% }) %> <% } %>
+        </div>
+      </div>
+    </section>
+    <!-- product display section end -->
+  </body>
+</html>

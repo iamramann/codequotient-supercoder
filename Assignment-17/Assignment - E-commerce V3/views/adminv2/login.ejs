@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <title>CQKart | Admin</title>
+    <!-- jquery  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- fontawesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
+    <!-- css -->
+    <link rel="stylesheet" href="css/adminv2/loginv2.css" type="text/css" />
+    <script defer type="module" src="script/adminv2/loginv2.js"></script>
+  </head>
+  <body>
+    <!-- header section start-->
+    <section class="navbar">
+      <div class="container">
+        <h1>
+          <i class="fas fa-shopping-bag"></i>
+          CQKart
+        </h1>
+      </div>
+    </section>
+    <!-- header section ends-->
+
+    <!-- login form section start-->
+    <section class="user-form">
+      <div class="container form-bg-light form-border">
+        <h1 class="md text-center bold-400">Admin Log-In</h1>
+        <%if(message){%>
+        <h4 class="text-red sm-x"><%=message%></h4>
+        <% } %>
+        <form action="/admin" method="POST" class="admin-form">
+          <div class="row">
+            <div class="col-25">
+              <label for="username" class="bold-400">Username</label>
+            </div>
+            <div class="col-75">
+              <input
+                type="text"
+                name="username"
+                id="username"
+                placeholder="Enter Your Username*"
+                required
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-25">
+              <label for="password" class="bold-400">Password</label>
+            </div>
+            <div class="col-75 fonteye">
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Enter Your Password*"
+                required
+              />
+              <i class="fas fa-eye" id="pass-eye" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="row bottom-row">
+            <div class="flex">
+              <a href="#" class="forget-pass">Forget password?</a>
+              <input type="submit" name="submit" id="submit" />
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+    <!-- login form section ends-->
+  </body>
+</html>

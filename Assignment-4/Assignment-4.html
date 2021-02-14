@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--User story 1 : Your webpage should have a Title of the recipe.-->
+	<title>My Secret Recipie</title>
+	<!--internal css-->
+	<style>
+
+
+	/*User Story 12 : Instead of writing multiple selectors to apply the font-family property, write a selector that applies a Arial font family attribute to all text at once.*/
+	body
+	{
+		font-family: Arial;
+	}
+	/*User Story 3 : Your page should have a <p> tag with class name "description" with font size 18 px for the description of the recipe.*/
+		.description
+		{
+			font-size: 18px;
+		}
+
+/*User Story 4 : Your page should have a <p> tag with id "cook-time" with font weight Bold to show total time taken to prepare the recipe.*/
+		#cook-time
+		{
+			font-weight: bold;
+		}
+
+/*User Story 10 : Now, let’s change the bullet points of the ingredient list to squares instead of circles. Start by writing a selector for the li elements inside of the .ingredients element.*/
+		.ingredients
+		{
+			list-style-type: square;
+		}
+
+/*User Story 11 : let’s make the time for each preparation step appear gray. write a selector for <p> elements that also have a class of "time".*/
+		.time
+		{
+			color: grey;
+		}
+	</style>
+</head>
+<body>
+<!--User story 2 : Add image of the prepared dish at top of the page with height of 150 px.-->
+		<img src="dish.jpg"  height="150px">
+<h1>Your Paneer Kohlapuri Recipe</h1>
+
+
+<p  class="description" > A typical Maharashtrian taste profile, with very rich, complex spice notes, perfectly balanced with chilli and fried coconut. Paneer Kolhapuri is great with a crispy parantha or steamed rice, along with some amti dal or kachumber. </p>
+
+
+
+<p id="cook-time">Total time: 50-55 minutes</p>
+
+<!-- User Story 5 : Use a heading tag for Ingredients. -->
+<h2>
+	Ingredients
+</h2>
+<!-- User Story 6 : Add ingredients in list items using ul with class "ingredients". -->
+
+	<ul class="ingredients">
+		<li>Coconut: 1 cup (70 gms approx.),grated</li>
+    <li>Dry Red Chillies: 4 pieces</li>
+    <li>Onion: 2, finely chopped</li>
+    <li>Paneer: 750gms,cut into cubes</li>
+    <li>Caesar Dressing</li>       
+	</ul>
+
+<!-- User Story 7 : Use a heading tag for preparation. -->
+<h3>
+	Preparation
+</h3>
+
+<!-- User Story 8 : Describe the recipe with ol. -->
+<ol>
+<!-- User Story 9 : Every list item should 've two <p> tags. First for step to preparation and 2nd <p> with class "time", for how much time spend on this step. -->
+	<li>
+		<p>
+		In a karahi, dry roast grated coconut, cloves, cinnamon, whole pepper, red chillies, poppy seeds, coriander seeds and aniseed, till coconut is 			golden brown. Cool and grind coarsely.</p>
+		<p class="time">
+			Time: 25 minutes
+		</p>
+	</li>
+		<li>
+			<p>
+				Heat oil in a karahi and sauté the onions till soft and translucent, add ginger-garlic paste and fry till the raw smell is gone. Add the 			tomatoes and salt and cook till the tomatoes are done and the oil begins to separate.
+			</p>
+			<p class="time">
+			Time: 10 minutes
+		</p>
+		</li>	
+		<li>
+			<p>
+			Add the coarsely ground spices, mix well and fry for 5-10 minutes. Add water, paneer and MAGGI Masala-ae-Magic. Cook on low flame for 8-10 		minutes after.</p>
+			<p class="time">
+				Time: 20 minutes
+			</p>
+		</li>
+</ol>
+
+
+<!--Create this assignment in Projects module and once you are done, submit the URL of your project link in answer field.-->
+</body>
+</html>

@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>compile-coding-14</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+  </head>
+
+  <body>
+    <div class="container grid">
+      <div class="flex">
+        <h1>Test Your Code</h1>
+        <select name="lang" id="lang">
+          <option name="java" id="8" value="8">Java</option>
+          <option name="javascript" id="4" value="4">JavaScript</option>
+          <option name="python" value="0" id="0">Python</option>
+          <option name="c" value="7" id="7">C</option>
+          <option name="cpp" value="77" id="77">CPP</option>
+        </select>
+      </div>
+      <textarea
+        rows="15"
+        cols="30"
+        id="txt"
+        placeholder="Write Your code here..."
+      ></textarea>
+      <button id="compile" class="btn">Compile</button>
+      <div id="result"></div>
+    </div>
+  </body>
+
+  <script src="script.js"></script>
+</html>

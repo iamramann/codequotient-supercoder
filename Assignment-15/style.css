@@ -1,0 +1,491 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+@import url("css/elements.css");
+@import url("css/utility.css");
+/*top-header*/
+.navbar {
+  width: 100%;
+  height: 70px;
+  background-color: var(--dark-color-1);
+  color: var(--light-color-3);
+}
+
+.navbar .flex {
+  overflow: hidden;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .container {
+  padding: 0px;
+}
+
+.navbar .btn {
+  width: 100px;
+  height: 40px;
+  background-color: var(--primary-color);
+}
+
+.admin {
+  margin: 15px auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+/*discusson area*/
+
+.discussion {
+  min-height: 100vh;
+}
+
+.discussion .container {
+  padding: 0px 0px;
+  margin: 15px auto;
+}
+
+.col-lt-upper {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px auto;
+  border-bottom: 1px solid var(--light-color-2);
+}
+
+.col-lt-upper .btn {
+  background-color: var(--dark-color-1);
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+.col-lt-upper .btn:after {
+  content: "";
+  background: var(--dark-color-1);
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s;
+}
+
+.col-lt-upper .btn:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s;
+}
+
+.col-lt-upper input {
+  margin: 10px 5px;
+  transition-duration: 0.4s;
+}
+
+/*right major column*/
+.col-rt {
+  width: 100%;
+  border-left: 1px solid var(--light-color-2);
+}
+
+.col-rt .bg-color {
+  background-color: var(--light-color-1);
+}
+
+.col-rt h1,
+h4 {
+  color: var(--dark-color-1);
+}
+
+.grid-new {
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 3fr;
+  gap: 20px;
+}
+
+.form-row .btn {
+  background-color: var(--dark-color-1);
+  float: right;
+}
+
+.form-row {
+  width: 100%;
+  padding: 5px;
+}
+
+.user-query {
+  background-color: var(--light-color-1);
+  /* background-color: red; */
+  border-radius: 5px;
+  margin: 5px;
+  display: grid;
+  word-wrap: break-word;
+  /* color: red; */
+}
+
+.user-query h1 {
+  font-size: 30px;
+  margin: 2px;
+  padding-left: 10px;
+}
+
+.user-query p {
+  font-size: 14px;
+  margin: 15px 5px;
+  padding-left: 10px;
+  word-wrap: break-word;
+}
+
+.ques-span {
+  display: block;
+}
+
+.ques-span label {
+  float: right;
+  padding-right: 10px;
+  color: var(--dark-color-2);
+}
+
+/*.r-form .container {*/
+/* min-height: 80vh; */
+/*}*/
+
+.r-form .grid {
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.8fr 0.5fr;
+  gap: 5px;
+}
+.r-1-container {
+  /* width: 100%; */
+  background-color: var(--light-color-1);
+  overflow-wrap: break-word;
+  /* color: red; */
+}
+
+.r-form-r-1 h1 {
+  padding: 5px 10px;
+  margin: 5px auto;
+  font-size: 28px;
+}
+
+.r-1-container label {
+  color: var(--light-color-3);
+  font-size: 14px;
+  margin: 4px 4px;
+  padding: 0px 10px;
+  /* padding: 50px auto; */
+  background-color: var(--light-color-2);
+}
+
+.r-1-container h2 {
+  padding: 5px 10px;
+  margin: 5px auto;
+  font-size: 25px;
+}
+
+.r-1-container h3 {
+  padding: 5px 10px;
+  font-weight: 100;
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: justify;
+  /* overflow-wrap: break-word; */
+}
+
+.r-1-container .btn {
+  padding: 12px 10px;
+  float: right;
+  background-color: var(--primary-color);
+  border-radius: 5px;
+}
+
+.r-form-r-2 h1 {
+  padding: 5px 10px;
+  margin: 5px auto;
+  font-size: 28px;
+}
+
+.grid-r-2 {
+  margin-top: 20px;
+  display: grid;
+  grid-template-rows: 0.5fr 0.5fr 3fr;
+  gap: 5px;
+}
+
+.grid-r-2 h1 {
+  padding: 0 10px;
+  margin: 5px 5px;
+  font-size: 24px;
+}
+
+.grid-r-2 input {
+  margin: 5px 10px;
+  padding: 0 10px;
+}
+
+.grid-r-2 textarea {
+  margin: auto;
+  border: solid 1px var(--dark-color-1);
+  font-size: 15px;
+  padding: 5px 10px;
+}
+
+.grid-r-2 .btn {
+  padding: 12px 10px;
+  background-color: var(--primary-color);
+  border-radius: 5px;
+}
+
+.user-ans {
+  padding: 5px 10px;
+  font-weight: 100;
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: justify;
+  color: var(--dark-color-1);
+  background-color: #eeeedd;
+}
+
+.r-1-container p {
+  color: var(--light-color-1);
+  /* margin: 5px; */
+  background-color: #333333;
+}
+
+.r-1-container hr {
+  margin: 0px 0px;
+}
+
+.admin-area .grid {
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 0px;
+}
+
+.admin-area .stats-1 {
+  text-align: center;
+  font-size: 30px;
+  padding: 50px auto;
+}
+
+.subject-wise-heading {
+  height: 50px;
+  background-color: var(--dark-color-2);
+  font-size: 30px;
+  line-height: 1.8;
+  color: var(--light-color-1);
+  padding: 50px auto;
+  margin: 0px auto;
+}
+
+.footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--dark-color-1);
+  height: 120px;
+  color: var(--light-color-3);
+}
+.footer .grid {
+  /* border: solid; */
+  grid-template-columns: 1fr;
+  gap: 0px;
+}
+
+.footer-col-1 {
+  align-self: center;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-col-1 h3 {
+  color: var(--light-color-2);
+}
+
+.footer-col-2 {
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-col-2 a {
+  color: inherit;
+  padding: 15px;
+}
+
+.footer-col-1 h1 {
+  /* margin: 5px; */
+  font-size: 25px;
+}
+
+.footer-col-1 h3 {
+  padding: 5px;
+  font-size: 16px;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 25px;
+  border: 1px solid #888;
+  width: 80%;
+  text-align: justify;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  margin-left: 25px;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-yes {
+  height: 40px;
+  width: 100px;
+  background-color: var(--success-color);
+}
+
+.btn-no {
+  height: 40px;
+  width: 100px;
+  background-color: var(--error-color);
+}
+
+.btn-yes:hover {
+  background-color: #1a8f1a;
+}
+
+.btn-no:hover {
+  background-color: #e72720;
+}
+
+/*media queries*/
+@media (max-width: 955px) {
+  .grid {
+    display: block;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+}
+
+@media (max-width: 572px) {
+  .col-lt-upper .btn {
+    width: 80%;
+    margin: 5px 40px;
+  }
+  .col-lt-upper {
+    display: inline;
+    border-bottom: none;
+  }
+  .col-lt-upper input {
+    height: 35px;
+    width: 80%;
+    margin: 5px 40px;
+  }
+
+  .form-row input {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .form-row h1 {
+    font-size: 27px;
+  }
+
+  .form-row h4 {
+    font-size: 16px;
+  }
+
+  .form-row .btn-1 {
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+@media (max-width: 1152px) {
+  .navbar {
+    width: 100%;
+    height: 144px;
+    background-color: var(--dark-color-1);
+    color: var(--light-color-3);
+  }
+
+  .navbar .flex {
+    display: block;
+    height: 144px;
+    flex-direction: column;
+  }
+
+  .heading {
+    text-align: center;
+  }
+
+  .admin {
+    text-align: center;
+    /* padding: 20px; */
+    display: block;
+  }
+}
+
+@media (max-width: 800px) {
+  .navbar {
+    height: 200px;
+    width: 100%;
+  }
+
+  .navbar .flex {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+  }
+
+  .admin {
+    justify-content: center;
+    gap: 5px;
+    padding: 5x;
+    display: grid;
+  }
+
+  .navbar .btn {
+    width: 70px;
+    padding: 0;
+    margin: 0;
+    border-radius: 5px;
+  }
+
+  .footer-col-1 h1,
+  .footer-col-1 h3 {
+    text-align: center;
+  }
+}

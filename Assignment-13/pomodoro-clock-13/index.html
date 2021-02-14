@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <title>Timer</title>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="inner grid">
+        <div class="timer border" id="timer">
+          <h1 id="show-time">MM:SS</h1>
+        </div>
+        <div class="controls grid-new">
+          <label id="message" for="" class="text">Session 1</label>
+          <!-- <hr /> -->
+          <div class="control-time flex">
+            <div class="work-control" style="width: 50%">
+              <label for="">Work Time</label>
+              <h3 id="work-time-here">20 Min</h3>
+              <div>
+                <button name="workPlusFunction" id="work-plus">+</button>
+                <button name="workMinusFunction" id="work-minus">-</button>
+              </div>
+            </div>
+            <div class="break-control" style="width: 50%">
+              <label for="">Break Time</label>
+              <h3 id="break-time-here">10 Min</h3>
+              <div>
+                <button name="breakPlusFunction" id="break-plus">+</button>
+                <button name="breakMinusFunction" id="break-minus">-</button>
+              </div>
+            </div>
+          </div>
+          <div class="btn-area">
+            <button name="startFunction" class="btn btn-start" id="start">
+              Start
+            </button>
+            <button name="resetFunction" class="btn btn-reset" id="reset">
+              Reset
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script src="script.js"></script>
+</html>

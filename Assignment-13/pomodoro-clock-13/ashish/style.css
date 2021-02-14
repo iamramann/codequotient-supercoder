@@ -1,0 +1,61 @@
+body {
+  background-color: tan;
+  margin: 0px;
+}
+.container {
+  height: 580px;
+  width: 300px;
+  background-color: peru;
+  border: 1px solid peru;
+  margin: 50px 0px 0px 0px;
+  border-width: 1em;
+}
+#subcontainer-1 {
+  height: 40%;
+  background-color: white;
+  margin: 10px;
+  border: solid black;
+  border-width: 01em;
+}
+#subcontainer-2 {
+  height: 55%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+hr {
+  border: 1px dotted white;
+}
+.plusMinus {
+  font-size: 18px;
+  height: 30px;
+  width: 40px;
+  background-color: black;
+  color: white;
+}
+#startPause,
+#reset {
+  font-size: 18px;
+  height: 30px;
+  width: 70px;
+  background-color: black;
+  margin: 10px 20px 20px 20px;
+  color: white;
+}
+.work {
+  color: royalblue;
+}
+.break {
+  color: orange;
+}
+.session1 {
+  color: white;
+  font-size: 36px;
+}
+
+.h1 {
+  margin: 90px 30px 90px 30px;
+  font-size: 48px;
+}

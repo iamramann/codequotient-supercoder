@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap");
+:root {
+  --primary-color: #047aed;
+  --secondary-color: #1c3fa8;
+  --dark-color: #002240;
+  --black-color: #000000;
+  --white-color: #ffffff;
+  --grey-color-1: #dddddd;
+  --grey-color-2: #f2f2f2;
+  --grey-color-3: #cccccc;
+  --light-color: #f4f4f4;
+  --light-color-2: #f8f9fa;
+  --success-color: #5cb85c;
+  --success-color-1: #5cb85c;
+  --success-color-2: #2c974b;
+  --error-color: #d9534f;
+  --color-form-background: #f6f8fa;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+.container {
+  max-width: 1100px;
+  padding: 0px 40px;
+  margin: 0px auto;
+}
+
+.section-1 {
+  background-color: var(--primary-color);
+  width: 100%;
+}
+
+.header h1 {
+  color: var(--white-color);
+  font-size: 32px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.header {
+  line-height: 70px;
+}
+
+.user-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.table {
+  width: 100%;
+  border: none;
+  border-collapse: collapse;
+}
+
+.table th {
+  color: var(--dark-color);
+  text-align: left;
+  background-color: var(--grey-color-3);
+  padding: 10px 15px;
+}
+.table td {
+  text-align: left;
+  padding: 10px 10px;
+  border: none;
+  text-transform: capitalize;
+}
+
+tr:nth-child(even) {
+  background-color: var(--grey-color-3);
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #4e5766;
+  box-shadow: 1px 0.5px #888888;
+  font-size: 18px;
+}
+
+.fa-sort {
+  cursor: pointer;
+}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>Profile</title>
+    <link rel="stylesheet" href="/css/user/user_profile.css" type="text/css" />
+    <link rel="stylesheet" href="/css/common/style.min.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script defer src="/script/user/user_profile.js"></script>
+    <style></style>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="container flex">
+        <a href="/" class="logo">
+          <i class="fa fa-shopping-bag fa-2x" aria-hidden="true"></i>
+          &nbsp;&nbsp;
+          <h2 class="md text-white">CQKart</h2>
+        </a>
+        <ul class="navlinks">
+          <% if(!display) {%>
+          <li>
+            <a
+              href="/user/login"
+              title="login"
+              id="login"
+              class="btn btn-outline"
+              style="font-size: larger"
+            >
+              <i class="fas fa-sign-in-alt"></i>&nbsp; Login
+            </a>
+          </li>
+
+          <% } %>
+          <li>
+            <a
+              href="/user/cart"
+              class="btn btn-outline"
+              title="cart"
+              id="btn-cart"
+              class="btn-cart"
+            >
+              <i class="fas fa-shopping-cart"></i> Cart
+            </a>
+
+            <% if(!display) {%>
+            <script>
+              $("#btn-cart").click(function (e) {
+                e.preventDefault();
+                $("#login").trigger("click");
+                alert("please login in to access the cart");
+              });
+            </script>
+            <%} else {%>
+            <script>
+              $("#btn-cart").trigger("click");
+            </script>
+            <% } %>
+          </li>
+          <% if(display){ %>
+          <li>
+            <a href="/user/logout" title="logout"
+              ><i class="fas fa-sign-out-alt"></i
+            ></a>
+          </li>
+
+          <li>
+            <a href="#" title="notifications" class="btn-notify"
+              ><i class="fas fa-bell"></i
+            ></a>
+          </li>
+
+          <li>
+            <a href="/ " title="Profile">
+              <i class="fas fa-home"></i>
+            </a>
+          </li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+
+    <section class="user-details">
+      <div class="container grid">
+ 
+          <div class="flex" style="background-color: #f2f2f2;">
+            <h2 class="top-name" >
+              Welcome, <%=user_details.firstname.toUpperCase() +" " +
+              user_details.lastname.toUpperCase() %>
+            </h2>
+            <div class="image-section">
+              <img
+                src="<%=user_details.avatar%>"
+                alt=""
+                class=""
+                id="admin-avatar-image"
+              />
+              <form
+                action="/user/update_user_avatar"
+                enctype="multipart/form-data"
+                method="POST"
+                id="avatar-image"
+              >
+                <a href="#" id="select_avatar">update Avatar</a>
+                <input type="file" name="file" id="avatar" accept="image/x-png,image/gif,image/jpeg"  />
+                <input
+                  type="submit"
+                  value="submit"
+                  name="submit"
+                  id="avatar-submit"
+                 
+                  disabled
+                />
+              </form>
+            </div>
+            
+          </div>
+          
+         
+        <div class="flex details">
+          <div>
+            <label>Name</label>
+          </div>
+          <h3 contenteditable="true" id="name">
+            <%=user_details.firstname.toUpperCase() +" " +
+            user_details.lastname.toUpperCase() %>
+          </h3>
+        </div>
+        <div class="flex details">
+          <div>
+            <label>username</label>
+          </div>
+          <h3 contenteditable="true" id="username">
+            <%=user_details.username%>
+          </h3>
+        </div>
+ 
+        <div class="flex details">
+          <div>
+            <label>Password</label>
+          </div>
+          <h3 contenteditable="true" id="password">
+         <%=user_details.password%>
+          </h3>
+        </div>
+        <div class="flex details">
+          <div>
+            <label>Mobile</label>
+          </div>
+          <h3 contenteditable="true" id="contact" class="detail-row"><%=user_details.contact%></h3>
+        </div>
+        <div class="flex details">
+          <div>
+            <label>Date of Birth</label>
+          </div>
+          <h3 class="disabled-field"><%=user_details.dob%></h3>
+        </div>
+        <div class="flex details">
+          <div>
+            <label>Email-id</label>
+          </div>
+          <h3 contenteditable="true" id="email"><%=user_details.email%></h3>
+        </div>
+        <div class="flex details">
+          <div>
+            <label>userId</label>
+          </div>
+          <h3 class="disabled-field"><%=user_details.userId%></h3>
+        </div>
+        <div class="flex details ">
+          <div>
+            <label>Gender</label>
+          </div>
+          <h3 class="disabled-field"><%=user_details.gender.toUpperCase()%></h3>
+        </div>
+        <div class="flex details  " >
+          <button class="btn btn-primary" style="width: 120px;" id="update-btn" value="<%=user_details._id%>" >Update</button>
+      </div>
+    </section>
+  </body>
+</html>

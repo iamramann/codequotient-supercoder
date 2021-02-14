@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+    <title>Welcome Admin</title>
+
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <!-- jquery  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
+    <!-- css -->
+    <link rel="stylesheet" href="/css/adminv2/dashboard_css.css" />
+
+    <!-- script -->
+    <script defer type="module" src="script/adminv2/navbar_script.js"></script>
+  </head>
+
+  <body>
+    <!-- navigation bar -->
+    <%-include("../partials/navbar.ejs") %>
+
+    <!-- dashboard section start -->
+    <section class="dashboard-wrapper" id="dashboard">
+      <div class="container grid">
+        <h1 class="md">Dashboard</h1>
+        <table class="dashboard-table" id="dashboard-table">
+          <thead>
+            <tr>
+              <th>Serial No.</th>
+              <th>Name</th>
+              <th>Username &nbsp;<i class="fa fa-sort" id="fa-sort"></i></th>
+              <th>Gender</th>
+              <th>Email-id</th>
+              <th>Phone Number</th>
+              <th>userId</th>
+              <th>User Since</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%if(user.length) {%> <% var monthNames = ["January", "February",
+            "March","April", "May", "June", "July","August", "September",
+            "October","November", "December" ]; %>
+            <%user.forEach(function(x,xindex) {%> <% var d = x.date.getDate();
+            var m = monthNames[x.date.getMonth()]; var mshort =
+            m.substring(0,3).toUpperCase(); var y=x.date.getFullYear(); var
+            status = x.status.toUpperCase();%>
+            <tr>
+              <td style="font-weight: bold"><%=xindex+1%>.</td>
+              <td>
+                <%=x.firstname.toUpperCase() +" " +x.lastname.toUpperCase() %>
+              </td>
+              <td><%=x.username %></td>
+              <td><%=x.gender.toUpperCase()%></td>
+              <td><%=x.email.toUpperCase()%></td>
+              <td><%=x.contact%></td>
+              <td><%=x.userId%></td>
+              <td><%=d+" "+mshort+" "+y%></td>
+              <td style="color: var(--success-color); font-weight: bold">
+                <%=status%>
+              </td>
+              <td>
+                <a
+                  href="/delete-user/<%=x.id%>"
+                  class="btn btn-danger"
+                  id="delete-user"
+                  title="Block user profile"
+                >
+                  <i class="fa fa-trash" aria-hidden="true"></i>&nbsp;delete
+                </a>
+                <!-- script to delete a user profile permanently on delete btn click start -->
+                <script>
+                  const link = $("#delete-user");
+                  link.click(function (e) {
+                    e.preventDefault();
+                    $.ajax({
+                      type: "PUT",
+                      url: link.attr("href"),
+                    })
+                      .done(function (data) {
+                        //delete current row
+                        $(link.parent().parent()[0]).remove();
+                        alert("Profile deleted");
+                      })
+                      .fail(function (xhr, data) {
+                        alert("some error occured");
+                      });
+                  });
+                </script>
+                <!-- script to delete a user profile permanently on delete btn click end -->
+              </td>
+            </tr>
+            <%})%> <%} else {%>
+
+            <tr>
+              <h1>No records to display...</h1>
+            </tr>
+            <%}%>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <!-- dashboard section ends -->
+  </body>
+</html>

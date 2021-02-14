@@ -1,0 +1,188 @@
+/* import default css file */
+@import url("/css/common/style.css");
+/* element section */
+h1,
+h2 {
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+p {
+  margin: 10px 0;
+}
+
+img {
+  width: 100%;
+}
+
+a {
+  color: black;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+}
+
+input[type="submit"] {
+  cursor: pointer;
+  padding: 12px 20px;
+  width: 150px;
+  float: right;
+  border: none;
+
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  border-radius: 5px;
+}
+
+input[type="submit"]:hover {
+  color: #fff;
+  background-color: var(--secondary-color);
+}
+
+/* navbar css */
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: var(--primary-color);
+}
+
+.navbar h1 {
+  padding: 10px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 32px;
+  color: white;
+}
+
+/* form css */
+.user-form {
+  margin: 70px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.user-form h1 {
+  margin: 2px auto;
+  color: #999;
+  /* color: var(--secondary-color); */
+}
+
+.form-border {
+  box-shadow: 0 3px 10px#999;
+}
+
+.admin-form {
+  margin: 25px auto;
+}
+
+.user-form .container {
+  padding: 20px;
+  border-radius: 5px;
+  width: 550px;
+  margin: auto 50px;
+}
+
+label {
+  display: inline-block;
+  padding: 12px 12px 12px 0px;
+}
+
+.row:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin: 5px auto;
+}
+
+.col-75 {
+  width: 75%;
+  margin: 5px auto;
+  float: right;
+}
+
+/* position fontawesome eye  */
+.fonteye {
+  position: relative;
+}
+
+.fonteye i {
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+  bottom: 12px;
+}
+
+/* i.fa-key {
+  position: absolute;
+  left: 5px;
+  bottom: 12px;
+} */
+
+/* forget password link */
+/* 
+.forget-pass {
+  position: absolute;
+  bottom: 12px;
+  color: blue;
+  text-decoration: underline;
+}
+.bottom-row {
+  margin: 1px auto;
+  position: relative;
+} */
+
+/* unknown */
+.hidden {
+  visibility: hidden;
+  height: 0;
+}
+.row .flex {
+  margin: 5px auto;
+  justify-content: space-around;
+  justify-items: center;
+  flex-wrap: wrap;
+}
+
+.bottom-row a {
+  cursor: pointer;
+  color: var(--secondary-color);
+  margin: 5px auto;
+  text-decoration: underline;
+}
+
+.bottom-row a:hover {
+  font-weight: bold;
+}
+
+.border {
+  border: solid 1px red;
+}
+
+@media (max-width: 512px) {
+  .col-25 {
+    float: none;
+    width: 100%;
+    margin: 2px auto;
+  }
+  .col-75 {
+    width: 100%;
+    float: none;
+    padding: 0px 1px;
+    margin: 2px auto;
+  }
+  input[type="submit"] {
+    width: 100%;
+  }
+  .user-form .container {
+    margin: auto 20px;
+  }
+}

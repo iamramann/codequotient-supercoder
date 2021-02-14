@@ -1,0 +1,41 @@
+:root {
+  --primary-color: #047aed;
+  --secondary-color: #1c3fa8;
+  --dark-color-1: #002240;
+  --dark-color-2: #002225;
+  --light-color-1: #f4f4f4;
+  --success-color: #5cb85c;
+  --error-color: #d9534f;
+  --light-color-2: #c2c1c1;
+  --light-color-3: #ffffff;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  overflow: auto;
+}
+
+.btn {
+  position: relative;
+  border: var(--light-color-3);
+  color: var(--light-color-3);
+  padding: 15px;
+  width: 150px;
+  text-align: center;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  margin: 5px;
+  outline-width: 2px;
+  outline-color: var(--dark-color-1);
+}
+
+/* .btn:hover {
+  background-color: var(--dark-color-2);
+} */
+
+.btn-radius {
+  border-radius: 5px;
+}

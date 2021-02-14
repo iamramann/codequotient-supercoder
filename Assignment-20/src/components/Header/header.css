@@ -1,0 +1,16 @@
+.section-1 {
+  background-color: #075e54;
+}
+.section-1 .header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-1 h1 {
+  color: #fff;
+  font-size: 32px;
+  user-select: none;
+  cursor: pointer;
+  padding: 10px;
+}

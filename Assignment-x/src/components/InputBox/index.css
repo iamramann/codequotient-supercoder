@@ -1,0 +1,14 @@
+textarea {
+  resize: none;
+  width: 100%;
+  height: 140px;
+  padding: 5px 15px;
+  font-family: "Lato", sans-serif;
+  font-size: 24px;
+  border: solid 2px var(--grey-color-3);
+  border-radius: 5px;
+}
+
+textarea::placeholder {
+  font-family: "Lato", sans-serif;
+}

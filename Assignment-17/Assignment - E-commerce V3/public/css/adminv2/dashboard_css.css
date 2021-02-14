@@ -1,0 +1,71 @@
+@import url("/css/common/style.css");
+@import url("./navbar.css");
+
+/* dashboard section css */
+.dashboard-wrapper h1 {
+  color: var(--secondary-color);
+  font-size: 24px;
+  margin: 10px auto;
+}
+
+.dashboard-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  display: table;
+  border: 1px solid #ccc;
+}
+.dashboard-table tr {
+  border-bottom: 1px solid #ddd;
+}
+.dashboard-table tr td {
+  font-size: 14px;
+  text-align: center;
+}
+tbody tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #fff;
+}
+
+.dashboard-table th,
+td {
+  padding: 8px 8px;
+  display: table-cell;
+  vertical-align: top;
+}
+
+.dashboard-wrapper h1 {
+  margin: 10px auto;
+  text-transform: uppercase;
+}
+
+.dashboard-wrapper .grid {
+  grid-template-columns: 1fr;
+  gap: 5px;
+}
+.dashboard-wrapper .container {
+  max-width: 1250px;
+  margin: 0 auto;
+  overflow: auto;
+  padding: 0 10px;
+}
+
+.fa-sort {
+  cursor: pointer;
+}
+.dashboard-table tr td a {
+  display: inline-block;
+  padding: 5px 10px;
+  cursor: pointer;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+/* dashboard css section ends */
+
+.disabled {
+  opacity: 0.5;
+}

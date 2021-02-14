@@ -1,0 +1,189 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="container">
+        <div class="flex">
+          <h1 class="heading">Discussion Portal</h1>
+          <div id="admin" class="admin">
+            <input
+              type="text"
+              placeholder="username"
+              value=""
+              name="username"
+              id="username"
+            />
+            <input
+              type="password"
+              placeholder="password"
+              value=""
+              name="password"
+              id="password"
+            />
+            <button class="btn btn-login btn-radius" id="admin-login">
+              Login
+            </button>
+            <a href="#">
+              <i
+                class="fas fa-sign-out-alt fa-3x"
+                id="logout"
+                style="display: none"
+              ></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <section class="admin-area" id="admin-area" style="display: none;"> <div class="grid stats-1"> <h1 id="total-users"></h1> <h1 id="total-ques-asked"></h1> <h1 id="total-response"></h1> </div><div class="stats-2" id="stats-2"> <div id="subject-wise"></div><div id="user-wise"></div></div></section> -->
+    <div id="my-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>
+          Are you sure!! You want to mark this question as resolved. By marking
+          resolve this question will be no longer displayed to other user.
+          <br />
+          click "Yes" to confirm.
+        </p>
+        <button id="btnyes" class="btn btn-yes btn-radius">Yes</button>
+        <button id="btnno" class="btn btn-no btn-radius">No</button>
+      </div>
+    </div>
+    <div id="date-time" style="height: 40px; padding: 10px"></div>
+    <section class="discussion" id="discussion">
+      <div class="container">
+        <div class="grid">
+          <div class="col col-lt grid-new border">
+            <div class="col-lt-upper">
+              <button id="ask" class="btn btn-ask btn-radius">
+                Ask Question
+              </button>
+              <input
+                type="text"
+                id="search-ques"
+                placeholder="Search questions using subject..."
+              />
+            </div>
+            <div class="col-lt-lower user-query" id="paste"></div>
+          </div>
+          <div class="col col-rt border">
+            <div class="container form" id="right-column">
+              <div class="form-row"><h1>Welcome to discussion Portal</h1></div>
+              <div class="form-row">
+                <h4 class="form-h4">
+                  Enter a Subject and Question to get started
+                </h4>
+              </div>
+              <div class="form-row">
+                <input
+                  id="subject"
+                  type="text"
+                  placeholder="Subject"
+                  required
+                />
+              </div>
+              <div class="form-row">
+                <textarea
+                  id="question"
+                  placeholder="Write your question here..."
+                  rows="15"
+                  cols="30"
+                  aria-required=""
+                ></textarea>
+              </div>
+              <div class="form-row">
+                <button id="place" class="btn btn-radius">Submit</button>
+              </div>
+            </div>
+            <div class="r-form" style="background-color: white" id="res-form">
+              <div class="container grid">
+                <div class="r-form-r-1">
+                  <h1>Question</h1>
+                  <div class="r-1-container" id="display-ques">
+                    <label id="ques-id"></label>
+                    <h2 id="res-sub"></h2>
+                    <h3 id="res-ques"></h3>
+                    <button class="btn" id="resolve">Resolve</button>
+                  </div>
+                </div>
+                <div class="r-form-r-2">
+                  <h1>Response</h1>
+                  <div class="grid-r-2">
+                    <h1>Add Response</h1>
+                    <input
+                      type="text"
+                      placeholder="Enter Name"
+                      id="other-user-name"
+                    />
+                    <div style="margin: 10px">
+                      <textarea
+                        rows="10"
+                        cols="30"
+                        id="other-user-ans"
+                        placeholder="Enter Comment"
+                      ></textarea>
+                    </div>
+                    <div style="display: flex; flex-direction: row-reverse">
+                      <button class="btn" id="other-user-submit">Submit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="grid">
+        <div class="footer-col-1">
+          <h1>Discussion Portal &copy;</h1>
+          <h3>Made with ❤️ and 🏋️‍♂️ by Raman⚡Sharma</h3>
+        </div>
+        <div class="footer-col-2">
+          <a
+            title="Find me on facebook"
+            href="https://www.facebook.com/profile.php?id=100054478106134"
+            target="_blank"
+          >
+            <i class="fab fa-facebook fa-2x"></i>
+          </a>
+          <a
+            title="My twitter profile"
+            href="https://twitter.com/ramanshhrma"
+            target="_blank"
+          >
+            <i class="fab fa-twitter fa-2x"></i>
+          </a>
+          <a
+            title="let's connect on linkedin"
+            href="https://www.linkedin.com/in/raman-sharma-8a288519b/"
+            target="_blank"
+          >
+            <i class="fab fa-linkedin-in fa-2x"></i>
+          </a>
+          <a title="download this porject" href="https://github.com/ramanshhrma/Discussion-Portal-App">
+            <i class="fab fa-github fa-2x" target="_blank"></i>
+          </a>
+          <a
+            title="Follow me on instagram"
+            href="https://www.instagram.com/ramanshhrma/"
+            target="_blank"
+          >
+            <i class="fab fa-instagram fa-2x"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script type="module" src="script.js"></script>
+  <script src="script/admin.js"></script>
+</html>

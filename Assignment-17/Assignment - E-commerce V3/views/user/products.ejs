@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <title>CQKart | Products</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="/css/common/style.min.css" type="text/css" />
+    <link rel="stylesheet" href="/css/common/footer.min.css" type="text/css" />
+
+    <link
+      rel="stylesheet"
+      href="/css/products/product.min.css"
+      type="text/css"
+    />
+
+    <style>
+      .avatar-img {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="my-modal" class="info-modal"></div>
+
+    <div class="navbar">
+      <div class="container flex">
+        <a href="/" class="logo">
+          <i class="fa fa-shopping-bag fa-2x" aria-hidden="true"></i>
+          &nbsp;&nbsp;
+          <h2 class="md text-white">CQKart</h2>
+        </a>
+        <ul class="navlinks">
+          <% if(!display) {%>
+          <li>
+            <a
+              href="/user/login"
+              title="login"
+              id="login"
+              class="btn btn-outline"
+              style="font-size: larger"
+            >
+              <i class="fas fa-sign-in-alt"></i>&nbsp; Login
+            </a>
+          </li>
+
+          <% } %>
+          <li>
+            <a
+              href="/user/cart"
+              class="btn btn-outline"
+              title="cart"
+              id="btn-cart"
+              class="btn-cart"
+            >
+              <i class="fas fa-shopping-cart"></i>&nbsp; Cart
+            </a>
+
+            <% if(!display) {%>
+            <script>
+              $("#btn-cart").click(function (e) {
+                e.preventDefault();
+                $("#login").trigger("click");
+                alert("please login in to access the cart");
+              });
+            </script>
+            <%} else {%>
+            <script>
+              $("#btn-cart").trigger("click");
+            </script>
+            <% } %>
+          </li>
+          <% if(display){ %>
+          <li>
+            <a href="/user/logout" title="logout"
+              ><i class="fas fa-sign-out-alt"></i
+            ></a>
+          </li>
+
+          <li>
+            <a href="#" title="notifications" class="btn-notify"
+              ><i class="fas fa-bell"></i
+            ></a>
+          </li>
+
+          <li>
+            <a href="/user/profile" title="Profile">
+              <img
+                src="<%=user.avatar%>"
+                alt=""
+                class="avatar-img"
+                id="avatar-img"
+              />&nbsp;
+              <label for="" style="cursor: pointer"
+                ><%=user.firstname+" "+user.lastname%></label
+              >
+              <!-- <i class="fa fa-user" aria-hidden="true"></i> -->
+            </a>
+          </li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+
+    <section class="products-display">
+      <div class="container grid">
+        <div class="grid-cards" id="grid_cards">
+          <% if(product_list) { %><% } %>
+          <%product_list.forEach(function(x,xindex) {%> <%var price=x.price;%>
+          <%var discounted_price = price - Math.round((price / 100) * 30);%>
+          <div class="card" id="<%=x.pid%>">
+            <h3 class="text-center my-1"><%=x.product_name%></h3>
+            <img
+              src="<%=x.image_url%>"
+              alt="<%=x.product_name%>"
+              title="<%=x.product_name%>"
+            />
+            <div class="grid">
+              <button class="btn btn-add" id="btn-add-<%=x.pid%>">
+                <i class="fas fa-cart-plus"></i>&nbsp;Add to cart
+              </button>
+              <!--script to add to cart start-->
+              <script>
+                $("#btn-add-<%=x.pid%>").click(function (e) {
+                  const snackbar = $("#snackbar");
+                  const product = {};
+                  product.product_name = `<%=x.product_name%>`;
+                  product.image_url = `<%=x.image_url%>`;
+                  product.description = `<%=x.description%>`;
+                  product.price = `<%=x.price%>`;
+                  product.pid = `<%=x.pid%>`;
+                  product.quantity = 1;
+                  product.id = `<%=x.id%>`;
+                  $.ajax({
+                    url: "/user/add-to-cart",
+                    method: "POST",
+                    data: product,
+                    success: function () {
+                      snackbar.addClass("show");
+                      const tid = setTimeout(() => {
+                        snackbar.removeClass("show");
+                        clearTimeout(tid);
+                      }, 3000);
+                    },
+                    error: function () {
+                      alert("Fail");
+                    },
+                  });
+                });
+              </script>
+              <!--script to add to cart end-->
+
+              <button class="btn btn-description" id="btn-desc-<%=x.pid%>">
+                <i class="fa fa-eye"></i>&nbsp;Description
+              </button>
+              <!--script to add modal when user clicks description btn start-->
+              <script>
+                $("#btn-desc-<%=x.pid%>").click(function (e) {
+                  //get modal element from html and change its visibility
+                  var modal_element = $("#my-modal");
+                  modal_element.css({ display: "block" });
+                  const div1 = $(`<div class="modal-content"></div>`);
+                  const x_btn = $('<span class="close">&times;</span>');
+
+                  //add event listener to x button and oclick delete the modal
+                  x_btn.click(function () {
+                    modal_element.remove();
+                    //create a new modal and append to body after old one gets deleted
+                    $(document.body).append(
+                      `<div id="my-modal" class="info-modal"></div>`
+                    );
+                  });
+
+                  //create bottom button for modal and attach event listener to delete the modal
+                  const btn_div = $(`<div style="float:right"></div>`);
+                  const btn_close = $(
+                    ' <button class="btn btn-yes" id="close">Close</button>'
+                  ).click(function () {
+                    $("#my-modal").remove();
+
+                    //create a new modal and append to body after old one gets deleted
+                    $(document.body).append(
+                      `<div id="my-modal" class="info-modal"></div>`
+                    );
+                  });
+                  btn_div.append(btn_close);
+
+                  //create modal contenet using associated values
+                  const p = $(
+                    `<div class="modal-grid"><h1><%=x.product_name%></h1><hr><img src="<%=x.image_url%>" alt="<%=x.product_name%>"/><p><%=x.description%></p></div>`
+                  );
+
+                  //append all components to make it complete
+                  p.append(btn_div);
+                  div1.append(x_btn);
+                  div1.append(p);
+                  modal_element.append(div1);
+                });
+              </script>
+              <!--script to add modal when user clicks description btn ends-->
+            </div>
+            <div class="text-center">
+              <label for="price">
+                <h3 class="bold">Price</h3>
+              </label>
+              <span class="line-through">
+                <label class="bold text-red">&#8377;<%=price%></label> </span
+              >&nbsp;
+              <label class="bold text-primary">
+                &#8377;<%=discounted_price%>
+              </label>
+            </div>
+            <div class="info" id="info<%=x.pid%>"></div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+    </section>
+
+    <div id="snackbar">
+      <i class="fa fa-check" aria-hidden="true"></i>
+      &nbsp;Item added to cart
+    </div>
+  </body>
+</html>

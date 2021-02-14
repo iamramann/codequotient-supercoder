@@ -1,0 +1,200 @@
+@import url("/css/common/style.css");
+@import url("/css/adminv2/navbar.css");
+.profile {
+  margin: 50px auto;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.image-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-section a {
+  margin: 5px auto;
+  text-decoration: underline;
+}
+
+/*navbar ends here*/
+
+.details {
+  margin: 5px auto;
+}
+
+.profile .grid {
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+}
+
+.profile .card {
+  margin: 0 auto;
+}
+
+.profile-btn {
+  float: right;
+}
+
+button.btn-submit:hover {
+  cursor: not-allowed;
+  transform: none;
+}
+
+button.btn-submit:disabled {
+  background-color: #dddddd;
+}
+
+.profile-btn .flex {
+  display: inline-block;
+  text-align: right;
+  flex-direction: row;
+  margin: 5px auto;
+}
+.profile-btn button {
+  margin: 5px auto;
+}
+.profile h1 {
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--secondary-color);
+}
+.border {
+  border: solid 1px red;
+}
+* {
+  box-sizing: border-box;
+}
+.form-container {
+  padding: 20px;
+  border-radius: 5px;
+  width: 100%;
+  margin: auto;
+}
+.col-25 {
+  width: 25%;
+  float: left;
+  margin-top: 6px;
+}
+.col-75 {
+  width: 75%;
+  float: right;
+  margin-top: 6px;
+}
+.col-50 {
+  width: 50%;
+  float: right;
+  margin-top: 6px;
+}
+
+.btn-update {
+  background-color: var(--success-color);
+}
+
+.btn-submit {
+  background-color: var(--primary-color);
+}
+
+.row:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+label {
+  display: inline-block;
+  padding: 12px 12px 12px 0;
+}
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+input[type="date"],
+input[type="file"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: none;
+}
+input[type="submit"] {
+  float: right;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  margin: 2px;
+  padding: 12px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+textarea::placeholder {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13.2px;
+}
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  display: grid;
+  gap: 10px;
+}
+.details .flex {
+  border-radius: 5px;
+  height: 80px;
+  padding: 10px 20px;
+  border: solid;
+  justify-content: space-between;
+}
+
+.stats {
+  height: 100vh;
+}
+
+.inventory {
+  height: 100vh;
+}
+
+.fonteye {
+  position: relative;
+}
+
+.fonteye i {
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+  bottom: 12px;
+}
+
+@media (max-width: 956px) {
+  .navbar {
+    height: 100px;
+  }
+  .navbar .flex {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 856px) {
+  #profile-section .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .col-25,
+  .col-75 {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+@media (max-width: 440px) {
+  #profile-section .container {
+    padding: 0 15px;
+  }
+}

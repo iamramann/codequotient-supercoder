@@ -1,0 +1,231 @@
+<!-- Build a Survey Form and fulfill the below User stories. -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta
+      charset="utf-8"
+      name="viewport"
+      content="width=device-width,inital-scale=1.0"
+    />
+    <!-- User story 1 : Your web form should have a Form Title in <header> tag. -->
+    <title>Survey Form</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- internal css not recommended to use -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Poppins;
+        background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);
+        background-size: cover;
+      }
+      /* User Story 9 : Use a common class to give margins and padding to container of all the fields.*/
+
+      .container {
+        width: 60%;
+        margin: auto;
+        color: rgb(226, 226, 226);
+        opacity: 0.8;
+      }
+      .container > h1 {
+        text-align: center;
+        color: orangered;
+      }
+      .container > p {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .column-25 {
+        width: 100%;
+        margin: 5px;
+      }
+      .column-75 {
+        margin-top: 2px;
+        width: 100%;
+      }
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: #ccc;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      input[type="text"],
+      input[type="email"],
+      select,
+      textarea,
+      button {
+        width: 100%;
+        margin: 3px;
+        border: solid 1px #ccc;
+        border-radius: 4px;
+        padding: 10px 14px;
+        resize: none;
+      }
+
+      button {
+        background-color: orangered;
+        border: none;
+        color: rgb(226, 226, 226);
+      }
+
+      textarea {
+        height: 80px;
+      }
+
+      input[type="radio"] {
+        margin: 1px;
+      }
+
+      select option[value=""] {
+        color: #ccc;
+      }
+
+      @media screen and (max-width: 768px) {
+        .container {
+          width: 80%;
+        }
+      }
+
+      @media screen and (max-width: 866px) {
+        .container {
+          width: 80%;
+        }
+        .container > h1 {
+          font-size: 1em;
+        }
+        .container > p {
+          font-size: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>CodeQuotient Survey Form</h1>
+      <p>Thank you for taking the time to help us improve the platform</p>
+
+      <!-- User story 2 : Add form tag to get the values. -->
+      <form action="#" method="POST">
+        <!-- User Story 3 : Add input field name*, email*, age, with their labels. Label and input field should be in a container with proper alignment. -->
+        <div class="row">
+          <div class="column-25">
+            <label>Name</label>
+          </div>
+          <div class="column-75">
+            <input
+              type="text"
+              name="name"
+              value=""
+              placeholder="Enter Your Name"
+              required
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-25">
+            <label>Email</label>
+          </div>
+          <div class="column-75">
+            <input
+              type="email"
+              name="email"
+              value=""
+              placeholder="Enter Your Email"
+              required
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-25">
+            <label>Age(Optional)</label>
+          </div>
+          <div class="column-75">
+            <input type="text" name="age" value="" placeholder="Age" />
+          </div>
+        </div>
+        <!-- User Story 4 : Use select tag to get the current role( Student, Full Time, etc... ) of the user. -->
+        <div class="row">
+          <div class="column-25">
+            <label>Which option best describes your currnet role</label>
+          </div>
+          <div class="column-75">
+            <select name="current_role" required>
+              <option value="" selected invalid disabled>
+                Select current role
+              </option>
+              <option value="student">Student</option>
+              <option value="part_time">Part Time</option>
+              <option value="full_time">Full Time</option>
+              <option value="other">Other..</option>
+            </select>
+          </div>
+        </div>
+        <!-- User Story 5 : Use radio button to get the recommend options from the user. -->
+        <div class="row" style="margin-bottom: 30px">
+          <div class="column-25">
+            <label>Would your recommend CodeQuotient to a friend?</label>
+          </div>
+          <div class="column-75">
+            <input type="radio" name="recommend" value="yes" checked />
+            <label>Definitely</label>
+            <br />
+            <input type="radio" name="recommend" value="may_be" />
+            <label>Maybe</label>
+            <br />
+            <input type="radio" name="recommend" value="not_sure" />
+            <label>Not Sure</label>
+          </div>
+        </div>
+        <!-- User Story 6 : Use checkbox to get in which area you need improvements. -->
+        <div class="row" style="margin-bottom: 30px">
+          <div class="column-25">
+            <label>In which courses you are interested</label>
+          </div>
+          <div class="column-75">
+            <input type="checkbox" name="improvement" value="data_structure" />
+            <label>Data Structure</label>
+            <br />
+            <input type="checkbox" name="improvement" value="cloud_computing" />
+            <label>Cloud Computing</label>
+            <br />
+            <input
+              type="checkbox"
+              name="improvement"
+              value="machine_learning"
+            />
+            <label>Machine Learning</label>
+          </div>
+        </div>
+        <!-- User Story 7 : Add a text area to get the suggestions. -->
+        <div class="row">
+          <div class="column-25">
+            <label>Any comments or suggestions?</label>
+          </div>
+          <div class="column-75">
+            <textarea
+              name="suggestions"
+              placeholder="Enter your comments here..."
+            ></textarea>
+          </div>
+        </div>
+        <div>
+          <button>Submit</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
+<!-- User Story 10 : Your form should be responsive for all the devices. -->

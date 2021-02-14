@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <title>CQKart | Login</title>
+
+    <!-- common css -->
+    <link rel="stylesheet" href="/css/common/style.min.css" />
+    <link rel="stylesheet" href="/css/common/footer.min.css" />
+
+    <!-- page specific css -->
+    <link rel="stylesheet" href="/css/user/user.min.css" />
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <section class="navbar">
+      <div class="container flex">
+        <a href="/" class="logo">
+          <i class="fa fa-shopping-bag fa-2x" aria-hidden="true"></i>
+          &nbsp;&nbsp;
+          <h2 class="md text-white">CQKart</h2>
+        </a>
+        <form
+          action="/user/login"
+          method="POST"
+          id="login-form"
+          class="form-flex"
+        >
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Enter username*"
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Enter password*"
+            required
+          />
+          <input
+            type="submit"
+            value="Sign-In"
+            id="submit"
+            class="btn btn-success"
+            name="signin"
+          />
+        </form>
+        <% if(username) { %>
+        <script>
+          $("#username").css({ border: "solid 2px red" });
+        </script>
+        <% } %> <% if(password) { %>
+        <script>
+          $("#password").css({ border: "solid 2px red" });
+        </script>
+        <% } %>
+      </div>
+    </section>
+    <section class="section02">
+      <div class="grid">
+        <div class="bg"></div>
+        <div class="signup-form">
+          <div class="form-container form-bg-light p-2 m-3 rd-5 t">
+            <h1 class="md text-center my-0">Sign-up here</h1>
+            <p class="sm-x" style="width: 100%" id="w-text">
+              *All fields are mandatory
+            </p>
+
+            <!-- form start -->
+            <form action="/user/signup" method="POST" id="user-signup">
+              <div class="row" id="first-name-row">
+                <div class="col-25">
+                  <label for="fname"> First Name</label>
+                </div>
+                <div class="col-75 indicator-p">
+                  <p class="text-red sm-x"></p>
+                  <input
+                    required
+                    type="text"
+                    name="firstname"
+                    id="firstname"
+                    placeholder="Enter first name"
+                    value=""
+                  />
+                  <span class="fname-indicator"></span>
+                </div>
+              </div>
+              <div class="row" id="last-name-row">
+                <div class="col-25">
+                  <label for="lname"> Last Name</label>
+                </div>
+                <div class="col-75 indicator-p">
+                  <p class="text-red sm-x"></p>
+                  <input
+                    required
+                    type="text"
+                    name="lastname"
+                    id="lastname"
+                    placeholder="Enter last name"
+                    value=""
+                  />
+                  <span class="lname-indicator"></span>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-25 tooltip">
+                  <label for="uname">Username</label>
+                  <i class="fa fa-info-circle info-icon" aria-hidden="true"></i>
+                  <span class="tooltip-text"
+                    >must contain alphanumeric characters
+                  </span>
+                </div>
+                <div class="col-75">
+                  <input
+                    required
+                    type="text"
+                    name="username"
+                    id="uname"
+                    placeholder="Enter your username"
+                    value=""
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25 tooltip">
+                  <label for="signup-pwd">Password</label>
+                  <i class="fa fa-info-circle info-icon" aria-hidden="true"></i>
+                  <span class="tooltip-text"
+                    >password must contain 8 characters including numbers and
+                    symbols and special characters
+                  </span>
+                </div>
+                <div class="col-75 fonteye">
+                  <input
+                    required
+                    type="password"
+                    name="password"
+                    id="signup-pwd"
+                    placeholder="Enter your password"
+                    value=""
+                  />
+                  <i class="fa fa-eye" id="pass-eye" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="row" id="email-row">
+                <div class="col-25">
+                  <label for="email">Email</label>
+                </div>
+                <div class="col-75 indicator-p">
+                  <p class="text-red sm-x"></p>
+
+                  <input
+                    required
+                    id="email"
+                    type="email"
+                    name="email"
+                    placeholder="someone@example.com"
+                    value=""
+                  />
+                  <span class="email-indicator"></span>
+                </div>
+              </div>
+
+              <div class="row" id="contact-row">
+                <div class="col-25">
+                  <label for="contact">Contact</label>
+                </div>
+                <div class="col-75 indicator-p">
+                  <p class="text-red sm-x"></p>
+
+                  <input
+                    required
+                    type="text"
+                    id="contact"
+                    name="contact"
+                    minlength="10"
+                    maxlength="10"
+                    placeholder="Do not add +91 or 0 as prefix "
+                    value=""
+                  />
+                  <span class="contact-indicator"></span>
+                </div>
+              </div>
+              <div class="row gndr">
+                <div class="col-25">
+                  <label for="">Gender</label>
+                </div>
+                <div class="col-75">
+                  <input type="radio" value="MALE" name="gender" id="male" />
+                  <label for="male">Male</label>
+                  <input
+                    type="radio"
+                    value="FEMALE"
+                    name="gender"
+                    id="female"
+                  />
+                  <label for="female">Female</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="dob">DOB</label>
+                </div>
+                <div class="col-75">
+                  <input type="date" id="dob" name="dob" />
+                </div>
+              </div>
+              <div class="row">
+                <input
+                  class="btn btn-primary float-r"
+                  id="signup-btn"
+                  type="submit"
+                  name="submit"
+                  value="Sign-Up"
+                />
+              </div>
+            </form>
+            <script>
+              // $("#user-signup");
+            </script>
+            <!-- form ends -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script type="module" src="/script/user/user_signup.js"></script>
+  <script type="module" src="/script/user/user_signup_fields.js"></script>
+  <script type="module" src="/script/user/user_script.min.js"></script>
+</html>

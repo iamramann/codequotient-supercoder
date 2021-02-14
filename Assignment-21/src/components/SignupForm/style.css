@@ -1,0 +1,97 @@
+.signup .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  padding: 20px;
+  border-radius: 5px;
+  width: 550px;
+  margin: 50px;
+}
+.row:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin: 5px auto;
+}
+
+.col-75 {
+  width: 75%;
+  margin: 5px auto;
+  float: right;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 5px;
+  border: solid 2px #ddd;
+}
+
+label {
+  display: inline-block;
+  padding: 12px 12px 12px 0px;
+}
+.form-border {
+  box-shadow: 0 3px 10px#999;
+}
+
+form {
+  padding: 10px;
+}
+
+button {
+  margin: 10px;
+  padding: 15px;
+  width: 120px;
+  float: right;
+  cursor: pointer;
+  border: none;
+  color: #ffffff;
+  background-color: #047aed;
+  border-radius: 5px;
+}
+
+.signup h1 {
+  color: #047aed;
+  padding: 5px;
+}
+.link1 {
+  cursor: pointer;
+}
+
+label.link1:hover {
+  text-decoration: underline;
+}
+@media (max-width: 574px) {
+  .col-25 {
+    float: none;
+    width: 100%;
+    margin: 2px auto;
+  }
+  .col-75 {
+    width: 100%;
+    float: none;
+    padding: 0px 1px;
+    margin: 2px auto;
+  }
+  input[type="submit"] {
+    width: 100%;
+  }
+  .signup .container {
+    padding: 0px 10px;
+  }
+  button {
+    width: 100%;
+    margin: 10px auto;
+  }
+}

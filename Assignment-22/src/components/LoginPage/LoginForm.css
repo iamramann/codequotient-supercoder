@@ -1,0 +1,113 @@
+.login-page-form-wrapper {
+  width: 100%;
+  min-height: 86vh;
+  padding: 90px 0 60px 0;
+  font-family: var(--font-family-lato);
+}
+
+.login-page-form {
+  width: 100%;
+  display: flex;
+}
+
+.my-form {
+  padding: 30px;
+  box-shadow: 2px 2px 3px 0 rgb(117 124 129 / 12%);
+  border: 1px solid #dbe2e8;
+  margin: 0px auto;
+  width: 700px;
+  height: 100%;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.my-form .row {
+  margin: 25px auto;
+}
+
+.my-form input {
+  border: 1px solid #d6d6d6;
+  border-radius: 0;
+  padding: 12px 10px;
+  width: 82%;
+  font-size: 14px;
+  font-family: "Lato", sans-serif;
+}
+.my-form input::placeholder {
+  color: #999;
+  font-size: 15px;
+  font-family: "Lato", sans-serif;
+}
+
+h3.login_heading {
+  font-weight: 400;
+  color: #101010;
+  font-size: 36px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+form {
+  margin-top: 35px;
+}
+
+button {
+  overflow: visible;
+  text-align: center;
+  margin: 0;
+}
+
+.btnx {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.btn-custom {
+  font-family: var(--font-family-lato);
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+  background-color: #de6834;
+  border-color: #de6834;
+  padding: 0.7rem 4.5rem;
+}
+
+.my-form p {
+  cursor: pointer;
+  color: #de6834;
+  text-decoration: none;
+  font-size: 14px;
+  font-family: var(--font-family-lato);
+}
+.my-form p:hover {
+  color: #de6834;
+  text-decoration: underline;
+}
+
+@media (max-width: 576px) {
+  h3.login_heading {
+    font-weight: 400;
+    color: #101010;
+    font-size: 22px;
+    text-align: center;
+    margin-top: 10px;
+  }
+} ;

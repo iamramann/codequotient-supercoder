@@ -1,0 +1,14 @@
+.section-1 {
+  background-color: var(--primary-color);
+}
+.section-1 .header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+}
+
+.section-1 h1 {
+  color: var(--white-color);
+  font-size: 36px;
+}

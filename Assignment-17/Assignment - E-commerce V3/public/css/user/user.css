@@ -1,0 +1,328 @@
+/*html element css section start*/
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"] {
+  padding: 12px 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus {
+  border: 1px solid #999;
+  outline: none;
+}
+
+input[type="radio"] {
+  margin-left: 5px;
+}
+
+input[type="submit"] {
+  border-radius: 4px;
+}
+
+label {
+  display: inline-block;
+  padding: 12px 12px 12px 0;
+}
+/*html element css section ends*/
+
+/*navabr css starts*/
+.navbar {
+  background-color: var(--primary-color);
+}
+.navbar a {
+  color: var(--white-color);
+  padding: 1em 1.5em;
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.navbar .flex {
+  justify-content: space-around;
+}
+.navbar a:hover {
+  background-color: var(--secondary-color);
+}
+
+.navbar h1 {
+  margin: 10px auto;
+  cursor: pointer;
+}
+.navbar form {
+  margin-bottom: 10px;
+}
+
+/*navabr css ends*/
+
+/*section02 css starts*/
+.section02 {
+  margin-top: 10px;
+}
+
+.section02 .grid {
+  justify-content: center;
+}
+
+.gndr {
+  display: flex;
+  align-items: center;
+}
+
+.bg {
+  background: url("/images/undraw_shopping_eii3.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+/*signup form css start*/
+.form-container {
+  width: 80%;
+}
+.col-25 {
+  position: relative;
+  width: 25%;
+  float: left;
+  margin-top: 6px;
+}
+.col-75 {
+  width: 75%;
+  float: right;
+  margin-top: 6px;
+}
+.row:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+/*apply css to all except radio btns and submit btn*/
+.signup-form input:not([type="radio"]):not([type="submit"]) {
+  width: 100%;
+}
+#signup-btn {
+  margin: 10px auto;
+}
+/*signup form css ends*/
+
+/*section02 css ends*/
+
+/*toast css starts*/
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+
+.transparent {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.text-info-p {
+  display: none;
+  border-radius: 5px;
+  margin: 5px auto;
+  padding: 10px auto;
+  border: solid 1px limegreen;
+}
+
+.info-p {
+  margin: 5px auto;
+  padding: 0px 5px;
+  color: rgb(118, 191, 9);
+}
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+/*toast css ends*/
+
+/*password field eye symoble css start*/
+
+.fonteye {
+  position: relative;
+}
+.fonteye i {
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+  bottom: 12px;
+}
+
+/*password field eye symoble css ends*/
+
+/*indicator*/
+.indicator-p {
+  position: relative;
+}
+
+.email-indicator,
+.contact-indicator,
+.fname-indicator,
+.lname-indicator {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #999;
+}
+
+#email-row.valid .email-indicator,
+#first-name-row.valid .fname-indicator,
+#last-name-row.valid .lname-indicator,
+#contact-row.valid .contact-indicator {
+  background: #2c974b;
+  box-shadow: 0 0 5px #2c974b, 0 0 10px #2c974b, 0 0 20px #2c974b,
+    0 0 40px #2c974b;
+}
+
+#email-row.invalid .email-indicator,
+#first-name-row.invalid .fname-indicator,
+#last-name-row.invalid .lname-indicator,
+#contact-row.invalid .contact-indicator {
+  background: #f00;
+  box-shadow: 0 0 5px #f00, 0 0 10px #f00, 0 0 20px #f00, 0 0 40px #f00;
+}
+
+.info-icon {
+  cursor: pointer;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip:hover .tooltip-text {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tooltip .tooltip-text {
+  font-size: 10px;
+  visibility: hidden;
+  width: 250px;
+  overflow: auto;
+  background-color: var(--dark-color);
+  color: var(--grey-color-2);
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 10%;
+  opacity: 0;
+  transition: opacity 0.5s;
+  /* top: 1px;
+  left: 100%; */
+}
+
+/* .tooltip .tooltip-text::after {
+  content: "";
+  position: absolute;
+  overflow: hidden;
+  bottom: -10px;
+  left: 43%;
+  margin-top: 10px;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+} */
+
+/*media queries start*/
+@media (max-width: 910px) {
+  .navbar .flex {
+    flex-direction: column;
+  }
+  .section02 .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-container {
+    background-color: var(--grey-color-2);
+    padding: 10px;
+    border-radius: 5px;
+    width: 90%;
+    margin: 50px auto;
+  }
+}
+@media (max-width: 630px) {
+  .navbar .navbar .flex {
+    flex-direction: column;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    margin: 5px auto;
+  }
+
+  input[type="submit"] {
+    align-self: center;
+    width: 120px;
+  }
+}

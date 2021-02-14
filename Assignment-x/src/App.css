@@ -1,0 +1,21 @@
+ul {
+  list-style: decimal;
+  text-transform: capitalize;
+  font-size: 16px;
+  text-align: justify;
+}
+
+ul li {
+  padding: 10px 15px;
+}
+
+ul li:nth-child(even) {
+  background-color: var(--grey-color-1);
+}
+ul li:nth-child(odd) {
+  background-color: var(--grey-color-2);
+}
+
+.section-2 {
+  margin: 10px auto;
+}

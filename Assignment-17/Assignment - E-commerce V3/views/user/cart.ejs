@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <title>CQKart | Cart</title>
+
+    <link rel="stylesheet" href="/css/common/style.min.css" type="text/css" />
+
+    <link rel="stylesheet" href="/css/cart/cart.min.css" type="text/css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
+    <style>
+      .navbar .flex {
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="my-modal" class="info-modal"></div>
+    <section class="navbar">
+      <div class="container">
+        <div class="header flex">
+          <h2 class="text-white" style="text-transform: capitalize; font-size: 22px;"> Hey!! <%=user.firstname + " " + user.lastname%></h2>
+          <h1 class="lg text-white">Cart..!</h1>
+          <a class="btn btn-danger" href="/user/logout">Logout</a>
+          
+        </div>
+      </div>
+    </section>
+
+    <section class="cart-values">
+      <div class="container">
+        <div class="grid">
+ 
+          <div class="btn-section">
+            <h2 id="total_amt">
+              <% var total = 0%> Total cart value is : ₹ <% if(products_array){
+              %> <%products_array.forEach(function(x,xindex) {%>
+              <%total+=(x.discounted_price*x.quantity)%> <% }) %>
+              <span id="amount"><%=parseFloat(total).toFixed(2)%> </span>
+              <% }else{ %> 0.00 <%} %>
+            </h2>
+            <div class="chk-btn">
+              <button class="btn btn-chk">Checkout</button>
+              <a class="btn btn-back" href="/user/shopping-page"
+                >Back to Product Page</a
+              >
+            </div>
+          </div>
+
+          <% if(products_array){ %>
+
+          <div class="grid-cards" id="grid-cards">
+            <%products_array.forEach(function(x,xindex) {%>
+            <div class="card" id="<%=x.pid%>">
+              <h3 style="text-align: center; margin: 10px auto">
+                <%=x.product_name%>
+              </h3>
+              <h3 style="text-align: center; margin: 10px auto;color:var(--secondary-color)">
+               Price - ₹<%=parseFloat(x.discounted_price).toFixed(2)%>
+              </h3>
+              <img src="<%=x.image_url%>" alt=" <%x.product_name%>" />
+              <div class="grid">
+                <button class="btn btn-delete" id="btn-delete-<%=xindex%>">
+                  <i class="fas fa-trash"></i>&nbsp;Delete Item
+                </button>
+
+                <!-- script to completely delete product start-->
+                <script>
+                  $("#btn-delete-<%=xindex%>").click(function (e) {
+                    $.ajax({
+                      url: "/user/delete_product",
+                      type: "POST",
+                      data: { pid: `<%=x.pid%>` },
+                      success: function () {
+                        var snackbar = $("#snackbar");
+                        snackbar.html(
+                          `<i class="fa fa-check" aria-hidden="true"></i>&nbsp;Item removed from the cart`
+                        );
+                        snackbar.addClass("show");
+                        const tid = setTimeout(() => {
+                          snackbar.removeClass("show");
+                          clearTimeout(tid);
+                        }, 3000);
+                        $("#btn-delete-<%=xindex%>").parent().parent().remove();
+                        const total_cart_value = parseFloat(
+                          $("#amount").text()
+                        );
+
+                        let items_value = parseFloat(
+                          `<%=x.quantity * x.discounted_price%>`
+                        ).toFixed(2);
+
+                        let value = parseFloat(
+                          total_cart_value - items_value
+                        ).toFixed(2);
+
+                        $("#amount").text(value);
+                      },
+                      error: function () {
+                        console.log("fail");
+                      },
+                    });
+                  });
+                </script>
+                <!-- script to completely delete product end-->
+
+                <button class="btn btn-description" id="btn-desc-<%=x.pid%>"
+                  <i class="fa fa-eye"></i>&nbsp;Description
+                </button>
+
+                <!--script to add modal when user clicks description btn start-->
+                <script>
+                  $("#btn-desc-<%=x.pid%>").click(function (e) {
+                    //get modal element from html and change its visibility
+                    var modal_element = $("#my-modal");
+                    modal_element.css({ display: "block" });
+                    const div1 = $(`<div class="modal-content"></div>`);
+                    const x_btn = $('<span class="close">&times;</span>');
+
+                    //add event listener to x button and oclick delete the modal
+                    x_btn.click(function () {
+                      modal_element.remove();
+                      //create a new modal and append to body after old one gets deleted
+                      $(document.body).append(
+                        `<div id="my-modal" class="info-modal"></div>`
+                      );
+                    });
+
+                    //create bottom button for modal and attach event listener to delete the modal
+                    const btn_div = $(`<div style="float:right"></div>`);
+                    const btn_close = $(
+                      ' <button class="btn btn-yes" id="close">Close</button>'
+                    ).click(function () {
+                      $("#my-modal").remove();
+
+                      //create a new modal and append to body after old one gets deleted
+                      $(document.body).append(
+                        `<div id="my-modal" class="info-modal"></div>`
+                      );
+                    });
+                    btn_div.append(btn_close);
+
+                    //create modal contenet using associated values
+                    const p = $(
+                      `<div class="modal-grid"><h1><%=x.product_name%></h1><hr><img src="<%=x.image_url%>" alt="<%=x.product_name%>"/><p><%=x.description%></p></div>`
+                    );
+
+                    //append all components to make it complete
+                    p.append(btn_div);
+                    div1.append(x_btn);
+                    div1.append(p);
+                    modal_element.append(div1);
+                  });
+                </script>
+                <!--script to add modal when user clicks description btn ends-->
+
+              </div>
+              <div class="qty-grid">
+                <div class="qty-lbl">
+                  <label for="qty" id="qty<%=x.pid%>" class="qty-text"
+                    >Total Quantity:<span id="prod-quantity-<%=xindex%>"
+                      ><%=x.quantity%>
+                    </span>
+                  </label>
+                </div>
+                <div class="qty-btn">
+                  <button class="btn btn-plus" id="btn-plus-<%=xindex%>">
+                    +
+                  </button>
+
+                  <!-- script to increase product quantity by 1 start-->
+                  <script>
+                    var increase = $("#btn-plus-<%=xindex%>");
+                    increase.click(function (e) {
+                      var snackbar = $("#snackbar");
+                      $.ajax({
+                        url: "/user/increase-by-one",
+                        type: "POST",
+                        data: { pid: `<%=x.pid%>` },
+                        success: function () {
+                          snackbar.html(
+                            `<i class="fa fa-check" aria-hidden="true"></i>&nbsp;Item qunatity increased`
+                          );
+                          snackbar.addClass("show");
+                          const tid = setTimeout(() => {
+                            snackbar.removeClass("show");
+                            clearTimeout(tid);
+                          }, 3000);
+
+                          const total_cart_value = parseFloat(
+                            $("#amount").text()
+                          );
+                          var discounted_price = `<%=x.discounted_price%>`;
+                          const value =
+                            parseFloat(discounted_price) + total_cart_value;
+                          $("#amount").text(parseFloat(value).toFixed(2));
+                          let total_quantity = parseInt(
+                            $("#prod-quantity-<%=xindex%>").text()
+                          );
+                          total_quantity++;
+                          $("#prod-quantity-<%=xindex%>").text(total_quantity);
+                        },
+                        error: function () {
+                          alert("some error occured");
+                        },
+                      });
+                    });
+                  </script>
+                  <!-- script to increase product quantity by 1 end-->
+
+                  <button class="btn btn-minus" id="btn-minus-<%=xindex%>">
+                    -
+                  </button>
+
+                  <!-- script to decrease product quantity by 1 start-->
+                  <script>
+                    var decrease = $("#btn-minus-<%=xindex%>");
+                    decrease.click(function (e) {
+                      $.ajax({
+                        url: "/user/decrease-by-one",
+                        type: "POST",
+                        data: { pid: `<%=x.pid%>` },
+                        success: function (data) {
+                          var snackbar = $("#snackbar");
+                          snackbar.html(
+                            `<i class="fa fa-check" aria-hidden="true"></i>&nbsp;Item quantity decreased`
+                          );
+                          snackbar.addClass("show");
+                          const tid = setTimeout(() => {
+                            snackbar.removeClass("show");
+                            clearTimeout(tid);
+                          }, 3000);
+
+                          let total_cart_value = parseFloat(
+                            $("#amount").text()
+                          );
+
+                          var discounted_price = `<%=x.discounted_price%>`;
+                          const value =
+                            total_cart_value - parseFloat(discounted_price);
+
+                          $("#amount").text(parseFloat(value).toFixed(2));
+
+                          let total_quantity = parseInt(
+                            $("#prod-quantity-<%=xindex%>").text()
+                          );
+                          total_quantity--;
+
+                          if (total_quantity >= 1) {
+                            $("#prod-quantity-<%=xindex%>").text(
+                              total_quantity
+                            );
+                          }
+                          if (total_quantity === 0) {
+                            $("#btn-delete-<%=xindex%>")
+                              .parent()
+                              .parent()
+                              .remove();
+                          }
+                        },
+                        error: function () {
+                          alert("error");
+                        },
+                      });
+                    });
+                  </script>
+                  <!-- script to decrease product quantity by 1 end-->
+                </div>
+         
+              </div>
+            </div>
+            <% }) %> <% } %>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="snackbar"></div>
+  </body>
+</html>

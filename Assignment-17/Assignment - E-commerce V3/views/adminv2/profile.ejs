@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <title>Admin | Profile</title>
+    <!-- jquery  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- fontawesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
+    <!--  css section -->
+    <link rel="stylesheet" href="/css/adminv2/profile.css" type="text/css" />
+    <!-- script -->
+    <script defer type="module" src="script/adminv2/profilev2.js"></script>
+    <script defer type="module" src="script/adminv2/navbar_script.js"></script>
+  </head>
+  <body>
+    <!-- navigation bar -->
+    <%-include("../partials/navbar.ejs") %>
+
+    <!-- profile section start -->
+    <section class="profile" id="profile-section">
+      <div class="container grid">
+        <div class="image-section">
+          <img
+            src="<% if(details!==null){ %> <%=details.avatar%><% } %> "
+            alt=""
+            class=""
+            id="admin-avatar-image"
+          />
+          <form
+            action="/change_admin_avatar"
+            enctype="multipart/form-data"
+            method="POST"
+            id="avatar-image"
+          >
+            <a href="#" id="select_avatar">update Avatar</a
+            ><input
+              type="file"
+              name="file"
+              id="avatar"
+              accept="image/x-png,image/gif,image/jpeg"
+            />
+            <input
+              type="submit"
+              value="submit"
+              name="submit"
+              id="avatar-submit"
+              disabled
+            />
+          </form>
+        </div>
+        <!--  -->
+        <div class="form-container form-bg-light">
+          <form
+            action="/update-admin/<% if(details!==null){ %><%=details.id%><% } %>"
+            id="admin"
+            method="POST"
+            enctype="application/json"
+          >
+            <%if(message){%>
+            <div class="row">
+              <h1>Hello</h1>
+              <h3 class="sm text-primary">
+                <% if(details!==null){ %> <%=message%><% } %>
+              </h3>
+            </div>
+            <%}%>
+            <div class="row">
+              <div class="col-25">
+                <label for="name">Name</label>
+              </div>
+              <div class="col-75">
+                <input
+                  required
+                  type="text"
+                  name="name"
+                  placeholder=""
+                  value="<% if(details!==null){ %><%=details.name.toUpperCase()%><% } %>"
+                  id="name"
+                  disabled
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="username">Username</label>
+              </div>
+              <div class="col-75">
+                <input
+                  required
+                  type="text"
+                  name="username"
+                  placeholder=""
+                  value="<% if(details!==null){ %><%=details.username%><% } %>"
+                  id="username"
+                  disabled
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="password">Password</label>
+              </div>
+              <div class="col-75 fonteye">
+                <input
+                  required
+                  type="password"
+                  name="password"
+                  placeholder=" "
+                  value="<% if(details!==null){ %><%=details.password%><% } %>"
+                  id="password"
+                  required
+                  disabled
+                />
+                <i class="fa fa-eye" id="admin-eye" aria-hidden="true"></i>
+              </div>
+              <script></script>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="pimage">Designation</label>
+              </div>
+              <div class="col-75">
+                <input
+                  required
+                  type="text"
+                  name="designation"
+                  placeholder=" "
+                  value="<% if(details!==null){ %><%=details.designation.toUpperCase()%><% } %>"
+                  disabled
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="dob">D.O.B</label>
+              </div>
+              <div class="col-75">
+                <input
+                  required
+                  type="text"
+                  name="dob"
+                  placeholder=""
+                  value="<% if(details!==null){ %><%=details.dob%><% } %>"
+                  disabled
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="mobile">Contact</label>
+              </div>
+
+              <div class="col-75">
+                <input
+                  required
+                  type="text"
+                  name="mobile"
+                  id="mobile"
+                  placeholder=""
+                  value="<% if(details!==null){ %><%=details.mobile%><% } %>"
+                  required
+                  disabled
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="email">Email </label>
+              </div>
+              <div class="col-75">
+                <input
+                  required
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder=""
+                  value="<% if(details!==null){ %><%=details.email.toUpperCase()%><% } %>"
+                  required
+                  disabled
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="id">CQKart Id </label>
+              </div>
+              <div class="col-75">
+                <input
+                  required
+                  type="text"
+                  name="cqkartid"
+                  id="cqkartid"
+                  value="<% if(details!==null){ %><%=details.cqkartid.toUpperCase()%><% } %>"
+                  disabled
+                />
+              </div>
+            </div>
+            <div class="row profile-btn">
+              <div class="flex">
+                <button type="button" class="btn btn-success" id="btn-update">
+                  update
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-submit"
+                  id="btn-submit"
+                  disabled
+                >
+                  Submit
+                </button>
+                <script></script>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!--  -->
+      </div>
+    </section>
+    <!-- profile section ends -->
+  </body>
+</html>

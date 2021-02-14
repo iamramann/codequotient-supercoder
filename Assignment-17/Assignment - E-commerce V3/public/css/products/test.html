@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <title>CQKart | Cart</title>
+    <!-- default css section -->
+    <link rel="stylesheet" href="css/common/style.min.css" type="text/css" />
+    <!-- custom css section -->
+    <link rel="stylesheet" href="css/cart/cart.min.css" type="text/css" />
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="my-modal" class="info-modal"></div>
+    <section class="navbar">
+      <div class="container">
+        <div class="header">
+          <h1 class="lg">Cart..!</h1>
+        </div>
+      </div>
+    </section>
+
+    <section class="cart-values">
+      <div class="container">
+        <div class="grid">
+          <!--yy btn section and total price display section yy-->
+          <div class="btn-section">
+            <h2 id="total_amt">
+              <!-- temprory  -->
+              <% var total = 0%> <%products_array.forEach(function(x,xindex) {%>
+              Total Cart value :₹ <%=total+= parseInt(x.discounted_price)%>.00
+              <% }) %>
+            </h2>
+            <div class="chk-btn">
+              <button class="btn btn-chk">Checkout</button>
+              <a class="btn btn-back" href="/products">Back to Product Page</a>
+            </div>
+          </div>
+          <!--xx btn section and total price display section xx-->
+
+          <!--yy user cart products display section yy-->
+          <div class="grid-cards" id="grid-cards">
+            <%products_array.forEach(function(x,xindex) {%>
+            <div class="card" id="<%=x.pid%>">
+              <h3 style="text-align: center; margin: 10px auto">
+                <%=x.product_name%>
+              </h3>
+              <img src="<%=x.image_url%>" alt=" <%x.product_name%>" />
+              <div class="grid">
+                <button class="btn btn-delete" id="btn-delete">
+                  <i class="fas fa-trash"></i>&nbsp;Delete Item
+                </button>
+                <button class="btn btn-description" id="btn-description">
+                  <i class="fa fa-eye"></i>&nbsp;Description
+                </button>
+              </div>
+              <div class="qty-grid">
+                <div class="qty-lbl">
+                  <label for="qty" id="qty<%=x.pid%>" class="qty-text"
+                    >Total Quantity:<%=x.quantity%>
+                  </label>
+                </div>
+                <div class="qty-btn">
+                  <button class="btn btn-plus" id="btn-plus">+</button>
+                  <button class="btn btn-minus" id="btn-minus">-</button>
+                </div>
+              </div>
+            </div>
+            <% }) %>
+          </div>
+          <!--xx user cart products display section xx-->
+        </div>
+      </div>
+    </section>
+  </body>
+  <script type="module" src="script/cart/cart.min.js"></script>
+</html>

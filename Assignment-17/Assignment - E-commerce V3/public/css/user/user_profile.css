@@ -1,0 +1,156 @@
+.navlinks i {
+  font-size: 24px;
+}
+
+.navbar {
+  background: var(--primary-color);
+}
+
+.navbar .flex {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.navbar a {
+  color: var(--white-color);
+  padding: 10px 15px;
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 1px;
+  /* text-transform: uppercase; */
+  transition: 0.3s;
+}
+
+.navbar ul {
+  width: 50%;
+  padding: 5px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.navbar ul li {
+  margin: 10px;
+}
+.navbar ul li {
+  display: inline-block;
+}
+.user-details {
+  min-height: 80vh;
+}
+.user-details .grid {
+  grid-template-columns: 1fr;
+  gap: 5px;
+}
+
+.user-details .flex {
+  flex-direction: row;
+  justify-content: space-between;
+}
+.user-details .border {
+  border: solid 1px #999;
+  border-radius: 5px;
+}
+.user-details label {
+  color: #002240;
+  text-transform: uppercase;
+}
+.user-details h3 {
+  color: rgb(19, 9, 9);
+  font-size: 16px;
+  font-weight: 400;
+  width: 80%;
+  padding: 10px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+}
+.div:first-child {
+  width: 20%;
+  padding: 10px;
+}
+
+.top-name {
+  color: #1c3fa8;
+  margin: 10px auto;
+  font-size: 24px;
+}
+
+.disabled-field {
+  opacity: 0.5;
+  font-weight: 400;
+}
+
+.image-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-section img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+/*products and navbar media queries starts*/
+@media (max-width: 1052px) {
+  .grid-cards {
+    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    gap: 10px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .grid-cards {
+    grid-template-columns: repeat(1, 1fr);
+    display: grid;
+    gap: 10px;
+  }
+  .grid-cards .grid {
+    height: 50px;
+    padding: 0px;
+    margin: 25px auto;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .grid-cards .btn {
+    width: 80%;
+    padding: 10px 20px;
+    margin: 0 auto;
+  }
+
+  .navbar .flex {
+    width: 100%;
+    flex-direction: column;
+  }
+  .navbar ul {
+    justify-content: center;
+  }
+  .user-details .flex {
+    display: table-column;
+  }
+
+  .user-details h3 {
+    width: 100%;
+    margin: 10px auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar .container {
+    padding: 0;
+    text-align: center;
+  }
+  .navbar ul {
+    justify-content: center;
+    width: 100%;
+  }
+}
+@media (max-width: 386px) {
+  .top-name {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,5 @@
+*.min.*
+*.json
+.vscode/
+task
+node_modules/

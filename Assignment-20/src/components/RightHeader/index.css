@@ -1,0 +1,92 @@
+.right-header {
+  width: 70%;
+  background-image: url("./28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
+  background-position: center;
+  position: relative;
+}
+
+.right-header h1 {
+  padding: 10px 15px;
+  background-color: #128c7e;
+  border-bottom: solid 2px #128c7e;
+  text-align: center;
+  color: var(--light-1);
+  font-size: 26px;
+}
+
+.sub-1 {
+  background-color: #128c7e;
+  display: flex;
+  width: 100%;
+  height: 53px;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+}
+
+.sub-1 h1 {
+  font-size: 20px;
+  margin-left: -15px;
+}
+
+.rh-icons {
+  display: flex;
+  justify-content: space-evenly;
+  width: 20%;
+  align-items: center;
+}
+
+.react-icons {
+  cursor: pointer;
+  font-size: 18px;
+  color: #fff;
+  margin: 5px;
+}
+
+.typing-section {
+  position: absolute;
+  bottom: 10px;
+  width: 95%;
+  margin: 0px 10px;
+}
+
+.typing-section input {
+  outline: none;
+  padding: 10px 35px;
+  width: 90%;
+  border-radius: 25px;
+  border: none;
+  height: 40px;
+}
+.typing-section input::placeholder {
+  font-family: "Lato", sans-serif;
+}
+
+.typing-section FaCamera {
+  position: absolute;
+}
+
+.icons {
+  position: "absolute";
+  padding: "5px";
+  cursor: "pointer";
+  color: "#838383";
+}
+
+.msg-class {
+  margin: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+.msg-class:nth-child(odd) {
+  text-align: left;
+}
+.msg-class:nth-child(even) {
+  text-align: right;
+}
+.msg-class label {
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 15px;
+}
